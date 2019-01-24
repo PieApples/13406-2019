@@ -406,11 +406,12 @@ public class CVAutoTesting extends LinearOpMode {
             telemetry.addData("Status:", " Finishing");
         }
         setAllMotors(0);
-        encoderDrive(200,-200,1);
+        encoderDrive(300,-300,1);
         while(motorsBusy() && !isStopRequested()){
             telemetry.addData("Status:", " Finishing");
         }
         setAllMotors(0);
+        mainUp();
         encoderDrive(-4000,-4000,1);
         while(motorsBusy() && !isStopRequested()){
             telemetry.addData("Status:", " Finishing");
