@@ -117,7 +117,7 @@ public class CVAutoTesting extends LinearOpMode {
 
         lifter.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        lifter.setPower(.5);
+        lifter.setPower(1);
 
         while(lifter.isBusy())
         {
@@ -233,7 +233,7 @@ public class CVAutoTesting extends LinearOpMode {
 
         // Optional Tuning
         detector.alignSize = 75;
-        detector.alignPosOffset = 0;
+        detector.alignPosOffset = 75;
 
         detector.enable();
 
@@ -283,83 +283,139 @@ public class CVAutoTesting extends LinearOpMode {
         }
         setAllMotors(0);
         mainUp();
-        encoderDrive(-178, -178, .5);
+        /*encoderDrive(-178, -178, .5);
+        while( motorsBusy() && !isStopRequested()){
+            telemetry.addData("Status","Moving Out");
+            telemetry.update();
+        }
+        setAllMotors(0);*/
+        mainUp();
+        encoderDrive(-2426, -2426, 1);
         while( motorsBusy() && !isStopRequested()){
             telemetry.addData("Status","Turning");
             telemetry.update();
         }
         setAllMotors(0);
         mainUp();
-        encoderDrive(-1426, 1426, .5);
+     /*   encoderDrive(-1248,-1248,.5);
+        while( motorsBusy() && !isStopRequested()){
+            telemetry.addData("Status","Turning");
+            telemetry.update();
+        }
+        */
+        mainUp();
+        encoderDrive(500,-500,.5);
         while( motorsBusy() && !isStopRequested()){
             telemetry.addData("Status","Turning");
             telemetry.update();
         }
         setAllMotors(0);
         mainUp();
-        encoderDrive(-1248,-1248,.5);
+      /*  encoderDrive(2000,  2000, .5);
         while( motorsBusy() && !isStopRequested()){
             telemetry.addData("Status","Turning");
             telemetry.update();
-        }
-        setAllMotors(0);
-        mainUp();
-        encoderDrive(-1120,1120,.5);
-        while( motorsBusy() && !isStopRequested()){
-            telemetry.addData("Status","Turning");
-            telemetry.update();
-        }
-        setAllMotors(0);
-        mainUp();
-        encoderDrive(2000,  2000, .5);
-        while( motorsBusy() && !isStopRequested()){
-            telemetry.addData("Status","Turning");
-            telemetry.update();
-        }
+        }*/
         setAllMotors(0);
         mainUp();
 
         int tickRef = leftFront.getCurrentPosition();
-        encoderDrive(2500, 2500, 0.2);
+        encoderDrive(3400, 3400, 0.3);
 
         while(detector.getAligned() == false && motorsBusy() && !isStopRequested()){
             telemetry.addData("Aligned", detector.getXPosition());
             telemetry.update();
         }
-
-        int ticksLeft = 2500 -( leftFront.getCurrentPosition() - tickRef);
+        int ticksLeft = 3400 -( leftFront.getCurrentPosition() - tickRef);
         setAllMotors(0);
 
-        encoderDrive(500, -500, 0.3 );
+        encoderDrive(1400, -1400, 1 );
         while( motorsBusy() && !isStopRequested()){
             telemetry.addData("Status","Turning");
             telemetry.update();
         }
         setAllMotors(0);
 
-        encoderDrive(400 , 400, 0.6);
+        encoderDrive(1200 , 1200, 1);
         while( motorsBusy() && !isStopRequested()){
             telemetry.addData("Status","Scoring");
             telemetry.update();
         }
         setAllMotors(0);
 
-        encoderDrive(ticksLeft, ticksLeft, 0.4);
+        encoderDrive(-1200 , -1200, 1);
         while( motorsBusy() && !isStopRequested()){
             telemetry.addData("Status","Scoring");
             telemetry.update();
         }
         setAllMotors(0);
 
-        /*
-        while(detector.getAligned() == false){
-           leftFront.setPower(-.2);
-           rightBack.setPower(-.2);
-           leftBack.setPower(-.2);
-           rightFront.setPower(-.2);
+        encoderDrive(-1300, 1300, 0.5);
+        while( motorsBusy() && !isStopRequested()){
+            telemetry.addData("Status","Turning");
+            telemetry.update();
         }
-        */
-
+        setAllMotors(0);
+        encoderDrive(ticksLeft, ticksLeft, 0.5);
+        while( motorsBusy() && !isStopRequested()){
+            telemetry.addData("Status","Scoring");
+            telemetry.update();
+        }
+        setAllMotors(0);
+        mainUp();
+        encoderDrive(900,-900,1);
+        while(motorsBusy() && !isStopRequested()){
+            telemetry.addData("Status:", " Turning");
+        }
+        setAllMotors(0);
+        mainUp();
+        encoderDrive(1000,1000,1);
+        while(motorsBusy() && !isStopRequested()){
+            telemetry.addData("Status:", " Moving Forwards");
+        }
+        setAllMotors(0);
+        mainUp();
+        encoderDrive(900,-900,1);
+        while(motorsBusy() && !isStopRequested()){
+            telemetry.addData("Status:", " Turning");
+        }
+        setAllMotors(0);
+        mainUp();/*
+        encoderDrive(700,700,1);
+        while(motorsBusy() && !isStopRequested()){
+            telemetry.addData("Status:", " Moving Forwards");
+        }
+        setAllMotors(0);
+        mainUp();
+        encoderDrive(700,-700,1);
+        while(motorsBusy() && !isStopRequested()){
+            telemetry.addData("Status:", " Turning");
+        }
+        setAllMotors(0);*/
+        mainUp();
+        encoderDrive(3300,3300,1);
+        while(motorsBusy() && !isStopRequested()){
+            telemetry.addData("Status:", " Going to YEET");
+        }
+        setAllMotors(0);
+        yeetus.setPower(1);
+        sleep(400);
+        mainUp();
+        encoderDrive(-4000,-4000,1);
+        while(motorsBusy() && !isStopRequested()){
+            telemetry.addData("Status:", " Finishing");
+        }
+        setAllMotors(0);
+        encoderDrive(200,-200,1);
+        while(motorsBusy() && !isStopRequested()){
+            telemetry.addData("Status:", " Finishing");
+        }
+        setAllMotors(0);
+        encoderDrive(-4000,-4000,1);
+        while(motorsBusy() && !isStopRequested()){
+            telemetry.addData("Status:", " Finishing");
+        }
+        setAllMotors(0);
 
 
         detector.disable();
