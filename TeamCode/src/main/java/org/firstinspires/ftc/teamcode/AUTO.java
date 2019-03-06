@@ -15,9 +15,9 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
-@Autonomous(name="RightSideCVAuto", group="OOF")
+@Autonomous(name="RAuto", group="OOF")
 
-public class CVAutoTesting extends LinearOpMode {
+public class AUTO extends LinearOpMode {
 
     // Declare OpMode members.
 
@@ -275,7 +275,7 @@ public class CVAutoTesting extends LinearOpMode {
         }
         setAllMotors(0);
         mainUp();
-        encoderDrive(-575, 575, .5);
+        encoderDrive(-535, 535, .5);
         while( motorsBusy() && !isStopRequested()){
             telemetry.addData("Status","Turning");
             telemetry.update();
@@ -303,7 +303,7 @@ public class CVAutoTesting extends LinearOpMode {
         }
         */
         mainUp();
-        encoderDrive(520,-520,.5);
+        encoderDrive(500,-500,.5);
         while( motorsBusy() && !isStopRequested()){
             telemetry.addData("Status","Turning");
             telemetry.update();
@@ -355,8 +355,8 @@ public class CVAutoTesting extends LinearOpMode {
             telemetry.update();
         }
         setAllMotors(0);
-        yeetus.setPosition(Servo.MIN_POSITION);
-        encoderDrive(ticksLeft + 200, ticksLeft + 200, 0.5);
+       /* yeetus.setPosition(Servo.MIN_POSITION);
+        encoderDrive(ticksLeft, ticksLeft, 0.5);
         while( motorsBusy() && !isStopRequested()){
             telemetry.addData("Status","Scoring");
             telemetry.update();

@@ -15,9 +15,9 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
-@Autonomous(name="RightSideCVAuto", group="OOF")
+@Autonomous(name="LeftSideCVAuto", group="OOF")
 
-public class CVAutoTesting extends LinearOpMode {
+public class CVAutoLeft extends LinearOpMode {
 
     // Declare OpMode members.
 
@@ -268,14 +268,13 @@ public class CVAutoTesting extends LinearOpMode {
         Down();
 
 
-        yeetus.setPosition(Servo.MIN_POSITION);
         encoderDrive(535,  535,  .5);
         while( motorsBusy() && !isStopRequested()){
 
         }
         setAllMotors(0);
         mainUp();
-        encoderDrive(-575, 575, .5);
+        encoderDrive(-635, 635, .5);
         while( motorsBusy() && !isStopRequested()){
             telemetry.addData("Status","Turning");
             telemetry.update();
@@ -289,7 +288,7 @@ public class CVAutoTesting extends LinearOpMode {
         }
         setAllMotors(0);*/
         mainUp();
-        encoderDrive(-2426, -2426, 1);
+        encoderDrive(-2326, -2326, 1);
         while( motorsBusy() && !isStopRequested()){
             telemetry.addData("Status","Turning");
             telemetry.update();
@@ -303,7 +302,7 @@ public class CVAutoTesting extends LinearOpMode {
         }
         */
         mainUp();
-        encoderDrive(520,-520,.5);
+        encoderDrive(500,-500,.5);
         while( motorsBusy() && !isStopRequested()){
             telemetry.addData("Status","Turning");
             telemetry.update();
@@ -355,21 +354,60 @@ public class CVAutoTesting extends LinearOpMode {
             telemetry.update();
         }
         setAllMotors(0);
-        yeetus.setPosition(Servo.MIN_POSITION);
-        encoderDrive(ticksLeft + 200, ticksLeft + 200, 0.5);
+        encoderDrive(ticksLeft, ticksLeft, 0.5);
         while( motorsBusy() && !isStopRequested()){
             telemetry.addData("Status","Scoring");
             telemetry.update();
         }
         setAllMotors(0);
         mainUp();
+        encoderDrive(-5900, -5900, 1);
+        while( motorsBusy() && !isStopRequested()){
+            telemetry.addData("Status","Forwards");
+            telemetry.update();
+        }
+        setAllMotors(0);
+        mainUp();
+        encoderDrive(-2100, 2100, 1);
+        while( motorsBusy() && !isStopRequested()){
+            telemetry.addData("Status"," Turning");
+            telemetry.update();
+        }
+        setAllMotors(0);
+        mainUp();
+        encoderDrive(2250, 2250, 1);
+        while( motorsBusy() && !isStopRequested()){
+            telemetry.addData("Status"," Turning");
+            telemetry.update();
+        }
+        setAllMotors(0);
+        mainUp();
+        yeetus.setPosition(Servo.MAX_POSITION);
+        sleep(250);
+       /* encoderDrive(-250, 250, 1);
+        while( motorsBusy() && !isStopRequested()){
+            telemetry.addData("Status"," Turning");
+            telemetry.update();
+        }
+        setAllMotors(0);*/
+        mainUp();
+        encoderDrive(-4200,-4200,1);
+        while( motorsBusy() && !isStopRequested()){
+            telemetry.addData("Status","Finishing");
+            telemetry.update();
+        }
+        setAllMotors(0);
+
+
+
+        /*mainUp();
         encoderDrive(900,-900,1);
         while(motorsBusy() && !isStopRequested()){
             telemetry.addData("Status:", " Turning");
         }
         setAllMotors(0);
         mainUp();
-        encoderDrive(1200,1200,1);//hello human
+        encoderDrive(1100,1100,1);
         while(motorsBusy() && !isStopRequested()){
             telemetry.addData("Status:", " Moving Forwards");
         }
@@ -377,7 +415,7 @@ public class CVAutoTesting extends LinearOpMode {
         mainUp();
         encoderDrive(1000,-1000,1);
         while(motorsBusy() && !isStopRequested()){
-            telemetry.addData("Status:", " Turning");//do you want to play a game
+            telemetry.addData("Status:", " Turning");
         }
         setAllMotors(0);
         mainUp();/*
@@ -391,14 +429,14 @@ public class CVAutoTesting extends LinearOpMode {
         while(motorsBusy() && !isStopRequested()){
             telemetry.addData("Status:", " Turning");
         }
-        setAllMotors(0);*/
+        setAllMotors(0);
         mainUp();
         encoderDrive(3300,3300,1);
         while(motorsBusy() && !isStopRequested()){
             telemetry.addData("Status:", " Going to YEET");
         }
         setAllMotors(0);
-        yeetus.setPosition(Servo.MAX_POSITION);
+        yeetus.setPower(1);
         sleep(400);
         mainUp();
         encoderDrive(-1000,-1000,1);
@@ -412,7 +450,7 @@ public class CVAutoTesting extends LinearOpMode {
         }
         setAllMotors(0);
         mainUp();
-        encoderDrive(-5900,-5900,1);
+        encoderDrive(-6000,-6000,1);
         while(motorsBusy() && !isStopRequested()){
             telemetry.addData("Status:", " Turning");
         }
@@ -424,14 +462,14 @@ public class CVAutoTesting extends LinearOpMode {
         /*encoderDrive(300,-300,1);
         while(motorsBusy() && !isStopRequested()){
             telemetry.addData("Status:", " Finishing");
-        }*/
+        }
         setAllMotors(0);
         mainUp();
         encoderDrive(-4000,-4000,1);
         while(motorsBusy() && !isStopRequested()){
             telemetry.addData("Status:", " Finishing");
         }
-        setAllMotors(0);
+        setAllMotors(0);*/
 
 
         detector.disable();

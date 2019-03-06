@@ -18,7 +18,7 @@ public class Drive extends OpMode {
     private DcMotor rightScoop = null;
     private DcMotor leftScoop = null;
     private DcMotor mainScoop = null;
-    private CRServo yeetus = null;
+    private Servo yeetus = null;
     private DcMotor lifter = null;
     private Servo rightDoor = null;
     private Servo leftDoor = null;
@@ -34,7 +34,7 @@ public class Drive extends OpMode {
         rightScoop = hardwareMap.get(DcMotor.class, "rightScoop");
         leftScoop = hardwareMap.get(DcMotor.class, "leftScoop");
         mainScoop = hardwareMap.get(DcMotor.class, "mainScoop");
-        yeetus = hardwareMap.get(CRServo.class, "yeetus");
+        yeetus = hardwareMap.get(Servo.class, "yeetus");
         lifter = hardwareMap.get(DcMotor.class, "lifter");
         rightDoor = hardwareMap.get(Servo.class, "rightDoor");
         leftDoor = hardwareMap.get(Servo.class, "leftDoor");
@@ -59,12 +59,22 @@ public class Drive extends OpMode {
     @Override
     public void start() {
 
+       yeetus.resetDeviceConfigurationForOpMode();
        rightDoor.resetDeviceConfigurationForOpMode();
        leftDoor.resetDeviceConfigurationForOpMode();
     }
 
     @Override
     public void loop() {
+
+        if (gamepad2.dpad_up == true){
+
+            yeetus.setPosition(.5);
+        }
+        if (gamepad2.dpad_down == true){
+
+            yeetus.setPosition(Servo.MIN_POSITION);
+        }
 
         if (gamepad2.x == true) {
 
@@ -117,8 +127,6 @@ public class Drive extends OpMode {
         leftScoop.setPower(gamepad2.left_stick_y*2/3);
         mainScoop.setPower(gamepad2.left_trigger*3/4);
         mainScoop.setPower(-gamepad2.right_trigger*3/4);
-        yeetus.setPower(gamepad1.right_trigger*2/3);
-        yeetus.setPower(-gamepad1.left_trigger*2/3);
     }
 
     @Override

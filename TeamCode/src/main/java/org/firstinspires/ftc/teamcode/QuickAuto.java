@@ -15,9 +15,9 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
-@Autonomous(name="RightSideCVAuto", group="OOF")
+@Autonomous(name="RightSideCVAuto222", group="OOF")
 
-public class CVAutoTesting extends LinearOpMode {
+public class QuickAuto extends LinearOpMode {
 
     // Declare OpMode members.
 
@@ -37,18 +37,18 @@ public class CVAutoTesting extends LinearOpMode {
 
     private ElapsedTime runtime = new ElapsedTime();
 
-    static final double     COUNTS_PER_MOTOR_REV    = 1120 ;
-    static final double     DRIVE_GEAR_REDUCTION    = 1.0 ;
-    static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;
-    static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
+    static final double COUNTS_PER_MOTOR_REV = 1120;
+    static final double DRIVE_GEAR_REDUCTION = 1.0;
+    static final double WHEEL_DIAMETER_INCHES = 4.0;
+    static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * 3.1415);
-    static final double     DRIVE_SPEED             = .75;
-    static final double     TURN_SPEED              = .75;
+    static final double DRIVE_SPEED = .75;
+    static final double TURN_SPEED = .75;
 
 
     private GoldAlignDetector detector;
 
-    public void setAllMotors(double power){
+    public void setAllMotors(double power) {
 
         leftBack.setPower(power);
         leftFront.setPower(power);
@@ -57,7 +57,7 @@ public class CVAutoTesting extends LinearOpMode {
 
     }
 
-    public void DriveForwardDistance(){
+    public void DriveForwardDistance() {
 
         leftBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -79,8 +79,7 @@ public class CVAutoTesting extends LinearOpMode {
         rightFront.setPower(.5);
         rightBack.setPower(.5);
 
-        while(rightBack.isBusy() && leftFront.isBusy() && rightFront.isBusy() && leftBack.isBusy())
-        {
+        while (rightBack.isBusy() && leftFront.isBusy() && rightFront.isBusy() && leftBack.isBusy()) {
             //wait until target position is reached
         }
 
@@ -96,18 +95,17 @@ public class CVAutoTesting extends LinearOpMode {
     }
 
 
-
-    private boolean motorsBusy(){
+    private boolean motorsBusy() {
         return leftFront.isBusy() && leftFront.isBusy() && rightFront.isBusy() && rightBack.isBusy();
     }
 
-    public void mainUp(){
+    public void mainUp() {
 
         mainScoop.setPower(1);
         sleep(250);
     }
 
-    public void Down(){
+    public void Down() {
 
         lifter.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
@@ -117,8 +115,7 @@ public class CVAutoTesting extends LinearOpMode {
 
         lifter.setPower(1);
 
-        while(lifter.isBusy())
-        {
+        while (lifter.isBusy()) {
             //wait until target position is reached
         }
 
@@ -131,7 +128,7 @@ public class CVAutoTesting extends LinearOpMode {
 
     public void encoderDrive(//double speed,
                              //double leftInches, double rightInches,double timeoutS
-                             int ticksLeft, int ticksRight, double speed ) {
+                             int ticksLeft, int ticksRight, double speed) {
 /*
         int newLeftFrontTarget;
         int newRightFrontTarget;
@@ -262,22 +259,21 @@ public class CVAutoTesting extends LinearOpMode {
         colorArm.setDirection(Servo.Direction.FORWARD);
 
 
-
         waitForStart();
 
         Down();
 
 
         yeetus.setPosition(Servo.MIN_POSITION);
-        encoderDrive(535,  535,  .5);
-        while( motorsBusy() && !isStopRequested()){
+        encoderDrive(535, 535, .5);
+        while (motorsBusy() && !isStopRequested()) {
 
         }
         setAllMotors(0);
         mainUp();
         encoderDrive(-575, 575, .5);
-        while( motorsBusy() && !isStopRequested()){
-            telemetry.addData("Status","Turning");
+        while (motorsBusy() && !isStopRequested()) {
+            telemetry.addData("Status", "Turning");
             telemetry.update();
         }
         setAllMotors(0);
@@ -290,8 +286,8 @@ public class CVAutoTesting extends LinearOpMode {
         setAllMotors(0);*/
         mainUp();
         encoderDrive(-2426, -2426, 1);
-        while( motorsBusy() && !isStopRequested()){
-            telemetry.addData("Status","Turning");
+        while (motorsBusy() && !isStopRequested()) {
+            telemetry.addData("Status", "Turning");
             telemetry.update();
         }
         setAllMotors(0);
@@ -303,9 +299,9 @@ public class CVAutoTesting extends LinearOpMode {
         }
         */
         mainUp();
-        encoderDrive(520,-520,.5);
-        while( motorsBusy() && !isStopRequested()){
-            telemetry.addData("Status","Turning");
+        encoderDrive(520, -520, .5);
+        while (motorsBusy() && !isStopRequested()) {
+            telemetry.addData("Status", "Turning");
             telemetry.update();
         }
         setAllMotors(0);
@@ -321,27 +317,27 @@ public class CVAutoTesting extends LinearOpMode {
         int tickRef = leftFront.getCurrentPosition();
         encoderDrive(3400, 3400, 0.3);
 
-        while(detector.getAligned() == false && motorsBusy() && !isStopRequested()){
+        while (detector.getAligned() == false && motorsBusy() && !isStopRequested()) {
             telemetry.addData("Aligned", detector.getXPosition());
             telemetry.update();
         }
-        int ticksLeft = 3400 -( leftFront.getCurrentPosition() - tickRef);
+        int ticksLeft = 3400 - (leftFront.getCurrentPosition() - tickRef);
         setAllMotors(0);
 
-        encoderDrive(1400, -1400, 1 );
-        while( motorsBusy() && !isStopRequested()){
-            telemetry.addData("Status","Turning");
+        encoderDrive(1400, -1400, 1);
+        while (motorsBusy() && !isStopRequested()) {
+            telemetry.addData("Status", "Turning");
             telemetry.update();
         }
         setAllMotors(0);
 
-        encoderDrive(1200 , 1200, 1);
-        while( motorsBusy() && !isStopRequested()){
-            telemetry.addData("Status","Scoring");
+        encoderDrive(1200, 1200, 1);
+        while (motorsBusy() && !isStopRequested()) {
+            telemetry.addData("Status", "Scoring");
             telemetry.update();
         }
         setAllMotors(0);
-
+/*
         encoderDrive(-1200 , -1200, 1);
         while( motorsBusy() && !isStopRequested()){
             telemetry.addData("Status","Scoring");
@@ -392,7 +388,7 @@ public class CVAutoTesting extends LinearOpMode {
             telemetry.addData("Status:", " Turning");
         }
         setAllMotors(0);*/
-        mainUp();
+     /*   mainUp();
         encoderDrive(3300,3300,1);
         while(motorsBusy() && !isStopRequested()){
             telemetry.addData("Status:", " Going to YEET");
@@ -424,8 +420,8 @@ public class CVAutoTesting extends LinearOpMode {
         /*encoderDrive(300,-300,1);
         while(motorsBusy() && !isStopRequested()){
             telemetry.addData("Status:", " Finishing");
-        }*/
-        setAllMotors(0);
+       /* }*/
+      /*  setAllMotors(0);
         mainUp();
         encoderDrive(-4000,-4000,1);
         while(motorsBusy() && !isStopRequested()){
@@ -437,5 +433,6 @@ public class CVAutoTesting extends LinearOpMode {
         detector.disable();
 
     }
-
+*/
+    }
 }
